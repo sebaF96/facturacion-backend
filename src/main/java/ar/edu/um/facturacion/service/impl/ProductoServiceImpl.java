@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> implements ProductoServiceAPI {
 
@@ -21,5 +23,10 @@ public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> impl
     @Override
     public JpaRepository<Producto, Long> getRepository() {
         return productoRepository;
+    }
+
+
+    public List<Producto> findByNombreOrCodigo(String nombre, String codigo) {
+        return productoRepository.findByNombreContainingOrCodigoContaining(nombre, codigo);
     }
 }
