@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implements ClienteServiceAPI {
 
@@ -21,5 +23,10 @@ public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implem
     @Override
     public JpaRepository<Cliente, Long> getRepository() {
         return clienteRepository;
+    }
+
+    @Override
+    public List<Cliente> findByNombreOrCuit(String nombre, String cuit) {
+        return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit);
     }
 }

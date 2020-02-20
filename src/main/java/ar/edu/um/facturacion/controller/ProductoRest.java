@@ -40,8 +40,10 @@ public class ProductoRest {
 
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/search")
     public List<Producto> searchProductos(@RequestParam String query) {
+
         return productoServiceAPI.findByNombreOrCodigo(query, query);
     }
 
@@ -57,15 +59,11 @@ public class ProductoRest {
 
     @PostMapping
     public ResponseEntity<Producto> createProducto(@Valid @RequestBody Producto producto) {
-        if (producto.getId() != null && productoServiceAPI.get(producto.getId()) != null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        try {
-            productoServiceAPI.save(producto);
-            return new ResponseEntity<>(producto, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        if (producto.getId() != null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        productoServiceAPI.save(producto);
+        return new ResponseEntity<>(producto, HttpStatus.CREATED);
+
     }
 
     @PutMapping
