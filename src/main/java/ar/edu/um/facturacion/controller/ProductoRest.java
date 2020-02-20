@@ -40,6 +40,12 @@ public class ProductoRest {
 
     }
 
+    @GetMapping("/search")
+    public List<Producto> searchProductos(@RequestParam String query){
+        return productoServiceAPI.findByNombreOrCodigo(query, query);
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Producto> deleteProductoById(@PathVariable Long id) {
 
