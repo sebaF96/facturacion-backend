@@ -23,6 +23,8 @@ public class Cliente implements Serializable {
     private String nombre;
     private String cuit;
     private String direccion;
+    @Enumerated(EnumType.ORDINAL)
+    private CondicionIva condicionIva;
 
 
 }

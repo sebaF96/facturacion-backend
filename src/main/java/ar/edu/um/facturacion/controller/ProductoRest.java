@@ -41,7 +41,7 @@ public class ProductoRest {
     }
 
     @GetMapping("/search")
-    public List<Producto> searchProductos(@RequestParam String query){
+    public List<Producto> searchProductos(@RequestParam String query) {
         return productoServiceAPI.findByNombreOrCodigo(query, query);
     }
 
@@ -69,10 +69,11 @@ public class ProductoRest {
     }
 
     @PutMapping
-    public ResponseEntity<Producto> updateProducto(@Valid @RequestBody Producto producto){
-        if(productoServiceAPI.get(producto.getId()) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Producto> updateProducto(@Valid @RequestBody Producto producto) {
+        if (productoServiceAPI.get(producto.getId()) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         productoServiceAPI.save(producto);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
+
 }
