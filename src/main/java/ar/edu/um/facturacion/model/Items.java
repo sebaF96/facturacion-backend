@@ -33,7 +33,6 @@ public class Items implements Serializable{
     @JoinColumn(name = "facturas_encabezado_id")
     private Encabezado encabezado;
     private BigDecimal cantidad;
-    private BigDecimal precioUnitario;
     private BigDecimal subTotal;
 
 
