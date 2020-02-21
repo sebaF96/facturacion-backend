@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import ar.edu.um.facturacion.common.Identificable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,11 +29,14 @@ public class Items implements Serializable, Identificable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nombre;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "productos_id")
     private Producto productos;
     @ManyToOne
     @JoinColumn(name = "facturas_encabezado_id")
+    @JsonIgnore
     private Encabezado encabezado;
     private BigDecimal cantidad;
     private BigDecimal subTotal;

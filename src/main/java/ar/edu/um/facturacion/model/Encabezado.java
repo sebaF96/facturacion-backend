@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import ar.edu.um.facturacion.common.Identificable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
