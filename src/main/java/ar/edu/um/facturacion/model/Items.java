@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import ar.edu.um.facturacion.common.Identificable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +23,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="factura_items")
-public class Items implements Serializable{
+public class Items implements Serializable, Identificable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

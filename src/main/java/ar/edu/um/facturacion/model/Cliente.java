@@ -1,10 +1,10 @@
 package ar.edu.um.facturacion.model;
 
+import ar.edu.um.facturacion.common.Identificable;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Getter
@@ -16,7 +16,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente implements Serializable {
+public class Cliente implements Serializable, Identificable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

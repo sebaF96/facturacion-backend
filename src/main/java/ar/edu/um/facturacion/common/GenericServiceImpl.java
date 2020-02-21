@@ -1,30 +1,46 @@
 package ar.edu.um.facturacion.common;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
-public abstract class GenericServiceImpl<T, ID extends Serializable> implements GenericServiceAPI<T, ID> {
+public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends Serializable> implements GenericServiceAPI<T, ID> {
 
     @Override
-    public T save(T entity) {
-        return getRepository().save(entity);
+    public ResponseEntity<T> add(T entity) {
+        if(entity.getId() != null && getRepository().findById(entity.getId()).isPresent()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        getRepository().save(entity);
+        return new ResponseEntity<>(entity, HttpStatus.CREATED);
     }
 
     @Override
-    public void delete(ID id) {
+    public ResponseEntity<HttpStatus> delete(ID id) {
+        if(!getRepository().findById(id).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         getRepository().deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
-    public T get(ID id) {
-        Optional<T> obj = getRepository().findById(id);
-        return obj.orElse(null);
+    public ResponseEntity<T> get(ID id) {
+        if(!getRepository().findById(id).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(getRepository().getOne(id), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<T> update(T entity) {
+        if(!getRepository().findById(entity.getId()).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        getRepository().save(entity);
+        return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
     @Override

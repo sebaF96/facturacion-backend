@@ -6,6 +6,8 @@ import ar.edu.um.facturacion.repository.ClienteRepository;
 import ar.edu.um.facturacion.service.api.ClienteServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,4 +31,5 @@ public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implem
     public List<Cliente> findByNombreOrCuit(String nombre, String cuit) {
         return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit);
     }
+
 }

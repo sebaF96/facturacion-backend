@@ -32,11 +32,7 @@ public class ClienteRest {
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> getClienteById(@PathVariable Long id) {
-
-        Cliente cliente = clienteServiceAPI.get(id);
-        if (cliente == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<>(cliente, HttpStatus.OK);
+        return clienteServiceAPI.get(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -48,31 +44,14 @@ public class ClienteRest {
 
     @PostMapping
     public ResponseEntity<Cliente> addCliente(@Valid @RequestBody Cliente cliente) {
-        if (cliente.getId() != null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        clienteServiceAPI.save(cliente);
-        return new ResponseEntity<>(cliente, HttpStatus.CREATED);
-
+        return clienteServiceAPI.add(cliente);
 
     }
 
     @PutMapping
     public ResponseEntity<Cliente> updateCliente(@Valid @RequestBody Cliente cliente) {
-        if (clienteServiceAPI.get(cliente.getId()) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-        clienteServiceAPI.save(cliente);
-        return new ResponseEntity<>(cliente, HttpStatus.OK);
+        return clienteServiceAPI.update(cliente);
     }
 
-    @GetMapping("/add")
-    public ResponseEntity<Cliente> test() {
-        Cliente cliente = new Cliente();
-        cliente.setDireccion("Cayetano Silva");
-        cliente.setNombre("Luna Facunda");
-        cliente.setCuit("398376262");
-        cliente.setCondicionIva(CondicionIva.MONOTRIBUTISTA);
-
-        clienteServiceAPI.save(cliente);
-        return new ResponseEntity<>(cliente, HttpStatus.CREATED);
-    }
 }

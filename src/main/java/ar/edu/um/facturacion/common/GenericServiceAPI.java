@@ -1,15 +1,20 @@
 package ar.edu.um.facturacion.common;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import java.io.Serializable;
 import java.util.List;
 
 public interface GenericServiceAPI<T, ID extends Serializable> {
 
-    T save(T entity);
+    ResponseEntity<T> add(T entity);
 
-    void delete(ID id);
+    ResponseEntity<HttpStatus> delete(ID id);
 
-    T get(ID id);
+    ResponseEntity<T> get(ID id);
+
+    ResponseEntity<T> update(T entity);
 
     List<T> getAll();
 

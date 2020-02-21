@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import ar.edu.um.facturacion.common.Identificable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="facturas_encabezado")
-public class Encabezado implements Serializable{
+public class Encabezado implements Serializable, Identificable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

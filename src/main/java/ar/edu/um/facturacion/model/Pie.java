@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
 
+import ar.edu.um.facturacion.common.Identificable;
 import lombok.*;
 
 @Getter
@@ -15,7 +16,7 @@ import lombok.*;
 
 @Entity
 @Table(name="factura_pie")
-public class Pie implements Serializable{
+public class Pie implements Serializable, Identificable<Long> {
 
     @Id
     private Long pie_id;
@@ -28,4 +29,8 @@ public class Pie implements Serializable{
     private String observaciones;
 
 
+    @Override
+    public Long getId() {
+        return this.facturas_encabezado.getId();
+    }
 }

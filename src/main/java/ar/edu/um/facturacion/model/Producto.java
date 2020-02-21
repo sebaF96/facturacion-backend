@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import ar.edu.um.facturacion.common.Identificable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="producto")
-public class Producto implements Serializable{
+public class Producto implements Serializable, Identificable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,52 +26,36 @@ public class ProductoRest {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Producto> getProductos() {
-
         return productoServiceAPI.getAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
-
-        Producto producto = productoServiceAPI.get(id);
-
-        if (producto == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(producto, HttpStatus.OK);
+        return productoServiceAPI.get(id);
 
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/search")
     public List<Producto> searchProductos(@RequestParam String query) {
-
         return productoServiceAPI.findByNombreOrCodigo(query, query);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Producto> deleteProductoById(@PathVariable Long id) {
-
-        if (productoServiceAPI.get(id) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        productoServiceAPI.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<HttpStatus> deleteProductoById(@PathVariable Long id) {
+        return productoServiceAPI.delete(id);
     }
 
     @PostMapping
     public ResponseEntity<Producto> createProducto(@Valid @RequestBody Producto producto) {
-        if (producto.getId() != null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        productoServiceAPI.save(producto);
-        return new ResponseEntity<>(producto, HttpStatus.CREATED);
+        return productoServiceAPI.add(producto);
 
     }
 
     @PutMapping
     public ResponseEntity<Producto> updateProducto(@Valid @RequestBody Producto producto) {
-        if (productoServiceAPI.get(producto.getId()) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        productoServiceAPI.save(producto);
-        return new ResponseEntity<>(producto, HttpStatus.OK);
+        return productoServiceAPI.update(producto);
     }
 
 }
