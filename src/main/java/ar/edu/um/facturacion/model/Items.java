@@ -30,7 +30,6 @@ public class Items implements Serializable, Identificable<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "productos_id")
     private Producto productos;

@@ -28,6 +28,7 @@ public class Encabezado implements Serializable, Identificable<Long> {
     private TipoFactura letra;
     @OneToOne
     private Cliente cliente;
+    @JsonIgnore
     @OneToMany(mappedBy = "encabezado")
     private List<Items> items;
 

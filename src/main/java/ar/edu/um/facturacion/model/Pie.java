@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.*;
 
 import ar.edu.um.facturacion.common.Identificable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Getter
@@ -24,6 +25,7 @@ public class Pie implements Serializable, Identificable<Long> {
     @MapsId
     @OneToOne
     @JoinColumn(name="encabezado_id")
+    @JsonIgnore
     private Encabezado facturas_encabezado;
     private BigDecimal precioTotal;
     private String observaciones;

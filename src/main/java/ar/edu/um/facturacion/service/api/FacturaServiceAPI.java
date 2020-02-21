@@ -13,4 +13,5 @@ import java.util.List;
 public interface FacturaServiceAPI {
 
     ResponseEntity<Factura> createFactura(Encabezado encabezado, List<Items> items, Pie pie);
+    ResponseEntity<Factura> getFacturaById(Long id);
 }
