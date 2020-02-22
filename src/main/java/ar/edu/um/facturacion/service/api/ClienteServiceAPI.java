@@ -9,4 +9,5 @@ import java.util.List;
 public interface ClienteServiceAPI extends GenericServiceAPI<Cliente, Long> {
 
     List<Cliente> findByNombreOrCuit(String nombre, String cuit);
+
 }

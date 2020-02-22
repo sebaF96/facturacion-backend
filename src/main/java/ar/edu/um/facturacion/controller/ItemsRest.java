@@ -57,9 +57,9 @@ public class ItemsRest {
     public ResponseEntity<Items> adddd(){
         Items item = new Items();
 
-        item.setProductos(itemsServiceAPI.getProducto(1L));
+        item.setProducto(itemsServiceAPI.getProducto(1L));
         item.setCantidad(BigDecimal.valueOf(5));
-        item.setSubTotal(item.getCantidad().multiply(item.getProductos().getPrecio()));
+        item.setSubTotal(item.getCantidad().multiply(item.getProducto().getPrecio()));
 
         return itemsServiceAPI.add(item);
     }
