@@ -185,7 +185,6 @@ como serian los body correspondientes</h4>
             }
         ],
         "pie": {
-            "pie_id": 24,
             "precioTotal": 1958,
             "observaciones": "La compra del mes",
             "id": 24

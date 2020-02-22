@@ -20,6 +20,7 @@ import lombok.*;
 public class Pie implements Serializable, Identificable<Long> {
 
     @Id
+    @JsonIgnore
     private Long pie_id;
 
     @MapsId

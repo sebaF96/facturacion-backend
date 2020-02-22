@@ -75,8 +75,10 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
             factura.setItems(factura.getEncabezado().getItems());
 
             return new ResponseEntity<>(factura, HttpStatus.OK);
+
         } catch (NullPointerException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
