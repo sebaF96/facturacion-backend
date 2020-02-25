@@ -43,4 +43,9 @@ public class FacturaRest {
         return facturaServiceAPI.createFactura(factura.getEncabezado(), factura.getItems(), factura.getPie());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteFactura(@PathVariable Long id){
+        return facturaServiceAPI.deleteFacturaById(id);
+    }
+
 }

@@ -4,6 +4,7 @@ import ar.edu.um.facturacion.model.*;
 import ar.edu.um.facturacion.repository.*;
 import ar.edu.um.facturacion.service.api.FacturaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -83,6 +84,23 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
         } catch (NullPointerException e) {
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    public ResponseEntity<String> deleteFacturaById(Long id) {
+        try {
+            Factura factura = getFacturaById(id).getBody();
+
+            assert factura != null;
+            pieRepository.delete(factura.getPie());
+            itemsRepository.deleteAll(factura.getItems());
+            encabezadoRepository.delete(factura.getEncabezado());
+
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+
+        } catch (NullPointerException | EmptyResultDataAccessException | AssertionError e) {
+            return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
         }
     }
 
