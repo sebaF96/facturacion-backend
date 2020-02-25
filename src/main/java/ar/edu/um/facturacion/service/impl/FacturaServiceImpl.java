@@ -26,8 +26,12 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
 
 
     @Autowired
-    public FacturaServiceImpl(EncabezadoRepository encabezadoRepository, ClienteRepository clienteRepository,
-                              PieRepository pieRepository, ItemsRepository itemsRepository, ProductoRepository productoRepository) {
+    public FacturaServiceImpl(EncabezadoRepository encabezadoRepository,
+                              ClienteRepository clienteRepository,
+                              PieRepository pieRepository,
+                              ItemsRepository itemsRepository,
+                              ProductoRepository productoRepository) {
+
         this.encabezadoRepository = encabezadoRepository;
         this.pieRepository = pieRepository;
         this.itemsRepository = itemsRepository;
@@ -86,7 +90,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
     @Override
     public List<Factura> getFacturaByCliente(Long id) {
 
-        if(!clienteRepository.findById(id).isPresent()) return null;
+        if (!clienteRepository.findById(id).isPresent()) return null;
 
         Cliente cliente = clienteRepository.findById(id).get();
         ArrayList<Factura> facturas = new ArrayList<>();
@@ -96,7 +100,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
                 .filter(e -> e.getCliente().getId().equals(cliente.getId()))
                 .collect(Collectors.toList());
 
-        for(Encabezado encabezado : encabezados){
+        for (Encabezado encabezado : encabezados) {
             Factura factura = new Factura(encabezado, encabezado.getItems(), pieRepository.findById(encabezado.getId()).get());
             facturas.add(factura);
         }
