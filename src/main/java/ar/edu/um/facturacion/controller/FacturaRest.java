@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/facturas")
 public class FacturaRest {
 
@@ -41,6 +41,11 @@ public class FacturaRest {
     @PostMapping
     public ResponseEntity<Factura> createFactura(@RequestBody Factura factura){
         return facturaServiceAPI.createFactura(factura.getEncabezado(), factura.getItems(), factura.getPie());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteFactura(@PathVariable Long id){
+        return facturaServiceAPI.deleteFacturaById(id);
     }
 
 }

@@ -16,8 +16,8 @@ import lombok.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name="factura_pie")
-public class Pie implements Serializable, Identificable<Long> {
+@Table(name = "factura_pie")
+public class Pie implements Serializable {
 
     @Id
     @JsonIgnore
@@ -25,15 +25,9 @@ public class Pie implements Serializable, Identificable<Long> {
 
     @MapsId
     @OneToOne
-    @JoinColumn(name="encabezado_id")
+    @JoinColumn(name = "encabezado_id")
     @JsonIgnore
     private Encabezado facturas_encabezado;
     private BigDecimal precioTotal;
     private String observaciones;
-
-
-    @Override
-    public Long getId() {
-        return this.facturas_encabezado.getId();
-    }
 }

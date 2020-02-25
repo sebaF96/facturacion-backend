@@ -4,6 +4,7 @@ import ar.edu.um.facturacion.model.*;
 import ar.edu.um.facturacion.repository.*;
 import ar.edu.um.facturacion.service.api.FacturaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,12 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
 
 
     @Autowired
-    public FacturaServiceImpl(EncabezadoRepository encabezadoRepository, ClienteRepository clienteRepository,
-                              PieRepository pieRepository, ItemsRepository itemsRepository, ProductoRepository productoRepository) {
+    public FacturaServiceImpl(EncabezadoRepository encabezadoRepository,
+                              ClienteRepository clienteRepository,
+                              PieRepository pieRepository,
+                              ItemsRepository itemsRepository,
+                              ProductoRepository productoRepository) {
+
         this.encabezadoRepository = encabezadoRepository;
         this.pieRepository = pieRepository;
         this.itemsRepository = itemsRepository;
@@ -53,7 +58,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
             }
 
             pie.setFacturas_encabezado(encabezado);
-            pie.setPrecioTotal(BigDecimal.valueOf(items.stream().map(Items::getSubTotal).mapToInt(BigDecimal::intValue).sum()));
+            pie.setPrecioTotal(BigDecimal.valueOf(items.stream().map(Items::getSubTotal).mapToDouble(BigDecimal::doubleValue).sum()));
             pieRepository.save(pie);
 
 
@@ -82,11 +87,28 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
         }
     }
 
+    @Override
+    public ResponseEntity<String> deleteFacturaById(Long id) {
+        try {
+            Factura factura = getFacturaById(id).getBody();
+
+            assert factura != null;
+            pieRepository.delete(factura.getPie());
+            itemsRepository.deleteAll(factura.getItems());
+            encabezadoRepository.delete(factura.getEncabezado());
+
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+
+        } catch (NullPointerException | EmptyResultDataAccessException | AssertionError e) {
+            return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Override
     public List<Factura> getFacturaByCliente(Long id) {
 
-        if(!clienteRepository.findById(id).isPresent()) return null;
+        if (!clienteRepository.findById(id).isPresent()) return null;
 
         Cliente cliente = clienteRepository.findById(id).get();
         ArrayList<Factura> facturas = new ArrayList<>();
@@ -96,7 +118,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
                 .filter(e -> e.getCliente().getId().equals(cliente.getId()))
                 .collect(Collectors.toList());
 
-        for(Encabezado encabezado : encabezados){
+        for (Encabezado encabezado : encabezados) {
             Factura factura = new Factura(encabezado, encabezado.getItems(), pieRepository.findById(encabezado.getId()).get());
             facturas.add(factura);
         }

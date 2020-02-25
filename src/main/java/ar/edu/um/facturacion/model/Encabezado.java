@@ -17,8 +17,8 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="facturas_encabezado")
-public class Encabezado implements Serializable, Identificable<Long> {
+@Table(name = "facturas_encabezado")
+public class Encabezado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +32,4 @@ public class Encabezado implements Serializable, Identificable<Long> {
     @OneToMany(mappedBy = "encabezado")
     private List<Items> items;
 
-
-    public void addItem(Items item){
-        items.add(item);
-        item.setEncabezado(this);
-    }
-
-    public void removeItem(Items item){
-        items.remove(item);
-        item.setEncabezado(null);
-    }
 }

@@ -1,7 +1,6 @@
 package ar.edu.um.facturacion.controller;
 
 import ar.edu.um.facturacion.model.Cliente;
-import ar.edu.um.facturacion.model.CondicionIva;
 import ar.edu.um.facturacion.service.api.ClienteServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/clientes")
 public class ClienteRest {
 
