@@ -24,7 +24,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="factura_items")
-public class Items implements Serializable, Identificable<Long> {
+public class Items implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -57,7 +57,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
             }
 
             pie.setFacturas_encabezado(encabezado);
-            pie.setPrecioTotal(BigDecimal.valueOf(items.stream().map(Items::getSubTotal).mapToInt(BigDecimal::intValue).sum()));
+            pie.setPrecioTotal(BigDecimal.valueOf(items.stream().map(Items::getSubTotal).mapToDouble(BigDecimal::doubleValue).sum()));
             pieRepository.save(pie);
 
 
