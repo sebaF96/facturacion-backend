@@ -33,7 +33,7 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
     @Override
     public ResponseEntity<T> get(ID id) {
         if(!getRepository().findById(id).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(getRepository().getOne(id), HttpStatus.OK);
+        return new ResponseEntity<>(getRepository().findById(id).get(), HttpStatus.OK);
     }
 
     @Override
