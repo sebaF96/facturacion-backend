@@ -9,7 +9,7 @@ como serian los body correspondientes</h4>
         "id" : "1",   
         "codigo": "Kakaroto-00",
         "nombre": "Dragon Ball Z Kakaroto",
-        "descripcion": "maso game",
+        "descripcion": "manso game",
         "precio": 1999.99
     }
 
@@ -31,7 +31,7 @@ como serian los body correspondientes</h4>
 
     {
         "id" : 1,
-        "nombre": "Luis Iguerri",
+        "nombre": "Marcelo Gallardo",
         "cuit": "22376262",
         "direccion": "UTN 388",
         "condicionIva": "RESPONSABLE_INSCRIPTO"
