@@ -31,8 +31,8 @@ public class Producto implements Serializable, Identificable<Long>{
     private String descripcion;
     @NotNull
     private BigDecimal precio;
-    @Column(columnDefinition = "tinyint(1) default 0")
-    private Boolean deleted = false;
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private Boolean active = true;
 
 
 

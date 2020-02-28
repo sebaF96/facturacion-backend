@@ -32,7 +32,7 @@ public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implem
     public List<Cliente> findByNombreOrCuit(String nombre, String cuit) {
         return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit)
                 .stream()
-                .filter(c -> !c.getDeleted())
+                .filter(Cliente::getActive)
                 .collect(Collectors.toList());
     }
 

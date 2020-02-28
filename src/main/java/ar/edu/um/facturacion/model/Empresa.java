@@ -39,12 +39,12 @@ public class Empresa implements Serializable, Identificable<Long> {
     private CondicionIva condicionIva;
 
     @Override
-    public void setDeleted(Boolean deleted) {
+    public void setActive(Boolean active) {
 
     }
 
     @Override
-    public Boolean getDeleted() {
-        return false;
+    public Boolean getActive() {
+        return true;
     }
 }

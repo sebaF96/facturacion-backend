@@ -29,8 +29,8 @@ public class Cliente implements Serializable, Identificable<Long>{
     private String direccion;
     @Enumerated(EnumType.ORDINAL)
     private CondicionIva condicionIva;
-    @Column(columnDefinition = "tinyint(1) default 0")
-    private Boolean deleted = false;
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private Boolean active = true;
 
 
 }

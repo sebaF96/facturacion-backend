@@ -6,7 +6,7 @@ public interface Identificable<ID extends Serializable> {
 
     ID getId();
 
-    void setDeleted(Boolean deleted);
+    void setActive(Boolean active);
 
-    Boolean getDeleted();
+    Boolean getActive();
 }

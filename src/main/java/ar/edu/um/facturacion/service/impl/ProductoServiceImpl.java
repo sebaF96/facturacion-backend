@@ -30,7 +30,7 @@ public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> impl
     public List<Producto> findByNombreOrCodigo(String nombre, String codigo) {
         return productoRepository.findByNombreContainingOrCodigoContaining(nombre, codigo)
                 .stream()
-                .filter(p -> !p.getDeleted())
+                .filter(Producto::getActive)
                 .collect(Collectors.toList());
     }
 }
