@@ -24,7 +24,7 @@ como serian los body correspondientes</h4>
 
 <p>/api/productos <b>PUT :id:</b></p>
 
-<p>/api/productos/{id} <b>DELETE :x: </b></p>
+<p>/api/productos/{id} <b>PUT :x: </b> (Este borra y es put) </p>
 
 <hr>
 <h3> Cliente :bust_in_silhouette: </h3>
@@ -47,7 +47,7 @@ como serian los body correspondientes</h4>
 
 <p>/api/clientes <b>PUT :id:</b></p>
 
-<p>/api/clientes/{id} <b>DELETE :x: </b></p>
+<p>/api/clientes/{id} <b>PUT :x: </b> (Este borra y es put) </p>
 
 <hr>
 <h3> Empresa :department_store: </h3>
@@ -71,7 +71,7 @@ como serian los body correspondientes</h4>
 
 <p>/api/empresa <b>PUT :id:</b></p>
 
-<p>/api/empresa/{id} <b>DELETE :x: </b></p>
+<p>/api/empresa/{id} <b>DELETE :x: </b></p> (Este borra y es DELETE)
 
 <hr>
 <h3> Factura :clipboard: </h3>
@@ -196,3 +196,5 @@ como serian los body correspondientes</h4>
 <p>/api/facturas/cliente/{idcliente} <b> GET :arrow_down: </b> </p>
 
 <p>/api/facturas <b> POST :arrow_up_small: </b> </p>
+
+<p>/api/facturas/{id} <b>DELETE :x: </b> (Este borra y es DELETE) </p>

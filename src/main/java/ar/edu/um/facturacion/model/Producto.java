@@ -2,11 +2,7 @@ package ar.edu.um.facturacion.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -22,7 +18,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="producto")
-public class Producto implements Serializable, Identificable<Long> {
+public class Producto implements Serializable, Identificable<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +31,8 @@ public class Producto implements Serializable, Identificable<Long> {
     private String descripcion;
     @NotNull
     private BigDecimal precio;
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private Boolean deleted = false;
 
 
 

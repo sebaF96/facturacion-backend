@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implements ClienteServiceAPI {
@@ -29,7 +30,10 @@ public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implem
 
     @Override
     public List<Cliente> findByNombreOrCuit(String nombre, String cuit) {
-        return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit);
+        return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit)
+                .parallelStream()
+                .filter(c -> !c.getDeleted())
+                .collect(Collectors.toList());
     }
 
 }

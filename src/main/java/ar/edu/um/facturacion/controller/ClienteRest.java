@@ -53,4 +53,9 @@ public class ClienteRest {
         return clienteServiceAPI.update(cliente);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteCliente(@PathVariable Long id){
+        return clienteServiceAPI.delete(id);
+    }
+
 }
