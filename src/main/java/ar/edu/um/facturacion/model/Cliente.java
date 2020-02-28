@@ -16,7 +16,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente implements Serializable, Identificable<Long> {
+public class Cliente implements Serializable, Identificable<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,8 @@ public class Cliente implements Serializable, Identificable<Long> {
     private String direccion;
     @Enumerated(EnumType.ORDINAL)
     private CondicionIva condicionIva;
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private Boolean deleted = false;
 
 
 }

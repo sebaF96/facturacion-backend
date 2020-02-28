@@ -42,7 +42,7 @@ public class ProductoRest {
     }
 
 
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteProductoById(@PathVariable Long id) {
         return productoServiceAPI.delete(id);
     }

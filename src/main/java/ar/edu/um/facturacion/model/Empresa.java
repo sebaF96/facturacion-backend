@@ -38,4 +38,13 @@ public class Empresa implements Serializable, Identificable<Long> {
     @Enumerated(EnumType.ORDINAL)
     private CondicionIva condicionIva;
 
+    @Override
+    public void setDeleted(Boolean deleted) {
+
+    }
+
+    @Override
+    public Boolean getDeleted() {
+        return false;
+    }
 }
