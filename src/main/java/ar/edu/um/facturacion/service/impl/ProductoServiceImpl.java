@@ -29,7 +29,7 @@ public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> impl
 
     public List<Producto> findByNombreOrCodigo(String nombre, String codigo) {
         return productoRepository.findByNombreContainingOrCodigoContaining(nombre, codigo)
-                .parallelStream()
+                .stream()
                 .filter(p -> !p.getDeleted())
                 .collect(Collectors.toList());
     }

@@ -1,5 +1,5 @@
 <h1>ENDPOINTS   :satellite: </h1>
-<h4>Todos los metodos POST y PUT necesitan body en Json. En el caso de los 
+<h4>Todos los metodos POST y PUT (menos los de soft-delete) necesitan body en Json. En el caso de los 
 POST no hace falta especificar el id en el body. Te dejo en cada seccion
 como serian los body correspondientes</h4>
 <hr>
@@ -71,7 +71,7 @@ como serian los body correspondientes</h4>
 
 <p>/api/empresa <b>PUT :id:</b></p>
 
-<p>/api/empresa/{id} <b>DELETE :x: </b></p> (Este borra y es DELETE)
+<p>/api/empresa/{id} <b>DELETE :x: </b> (Este borra y es DELETE) </p>
 
 <hr>
 <h3> Factura :clipboard: </h3>

@@ -31,7 +31,7 @@ public class ClienteServiceImpl extends GenericServiceImpl<Cliente, Long> implem
     @Override
     public List<Cliente> findByNombreOrCuit(String nombre, String cuit) {
         return clienteRepository.findByNombreContainingOrCuitContaining(nombre, cuit)
-                .parallelStream()
+                .stream()
                 .filter(c -> !c.getDeleted())
                 .collect(Collectors.toList());
     }
