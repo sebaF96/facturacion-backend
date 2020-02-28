@@ -48,7 +48,7 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
 
     @Override
     public List<T> getAll() {
-        return getRepository().findAll().stream().filter(e -> !e.getDeleted()).collect(Collectors.toList());
+        return getRepository().findAll().parallelStream().filter(e -> !e.getDeleted()).collect(Collectors.toList());
     }
 
     public abstract JpaRepository<T, ID> getRepository();

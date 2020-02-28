@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> implements ProductoServiceAPI {
@@ -27,6 +28,9 @@ public class ProductoServiceImpl extends GenericServiceImpl<Producto, Long> impl
 
 
     public List<Producto> findByNombreOrCodigo(String nombre, String codigo) {
-        return productoRepository.findByNombreContainingOrCodigoContaining(nombre, codigo);
+        return productoRepository.findByNombreContainingOrCodigoContaining(nombre, codigo)
+                .parallelStream()
+                .filter(p -> !p.getDeleted())
+                .collect(Collectors.toList());
     }
 }
