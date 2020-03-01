@@ -22,6 +22,11 @@ public class EmpresaRest {
         this.empresaServiceAPI = empresaServiceAPI;
     }
 
+    @GetMapping
+    public ResponseEntity<Empresa> getOneEmpresa(@PathVariable Long id){
+        return empresaServiceAPI.getFirst();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Empresa> getEmpresa(@PathVariable Long id){
         return empresaServiceAPI.get(id);

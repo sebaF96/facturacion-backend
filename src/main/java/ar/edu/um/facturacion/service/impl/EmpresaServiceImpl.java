@@ -33,9 +33,17 @@ public class EmpresaServiceImpl extends GenericServiceImpl<Empresa, Long> implem
 
 
     @Override
+    public ResponseEntity<Empresa> getFirst() {
+
+        if (empresaRepository.findAll().size() == 0) return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(empresaRepository.findAll().get(0), HttpStatus.OK);
+
+    }
+
+    @Override
     public JpaRepository<Empresa, Long> getRepository() {
 
         return empresaRepository;
     }
-
 }
