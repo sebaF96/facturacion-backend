@@ -1,9 +1,13 @@
-<h1>ENDPOINTS   :satellite: </h1>
-<h4>Todos los metodos POST y PUT (menos los de soft-delete) necesitan body en Json. En el caso de los 
-POST no hace falta especificar el id en el body. Te dejo en cada seccion
-como serian los body correspondientes</h4>
+<h1>facturacion-backend</h1>
+
+![madewith](https://img.shields.io/badge/made%20with-SpringBoot-green?logo=spring&style=for-the-badge)
+
 <hr>
-<h3> Producto :basketball: </h3>
+<h2> Endpoints </h3>
+<h4>Todos los metodos POST y PUT (menos los de soft-delete) necesitan body en Json. En el caso de los 
+POST no hace falta especificar el id en el body</h4>
+<hr>
+<h3> Producto :high_heel: </h3>
     
     {
         "id" : "1",   
@@ -14,17 +18,40 @@ como serian los body correspondientes</h4>
     }
 
 
-<p>/api/productos <b>GET :arrow_down: </b> </p>
+<p>
 
-<p>/api/productos/{id} <b>GET :arrow_down: </b></p>
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/productos </b>
 
-<p>/api/productos/search?query={loquesea} <b>GET :arrow_down: </b></p>
+</p>
 
-<p>/api/productos <b>POST :arrow_up_small: </b></p>
+<p>
+    
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg)   &nbsp; &nbsp; <b> /api/productos/{id} </b>
 
-<p>/api/productos <b>PUT :id:</b></p>
+</p>
 
-<p>/api/productos/{id} <b>PUT :x: </b> (Este borra y es put) </p>
+<p>
+
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg)   &nbsp; &nbsp; <b> /api/productos/search?query={loquesea} </b>
+</p>
+
+<p>
+
+![GET](https://img.shields.io/badge/method-POST-yellow.svg) &nbsp; &nbsp; <b> /api/productos </b>
+
+</p>
+
+<p>
+    
+![GET](https://img.shields.io/badge/method-PUT-blueviolet.svg)   &nbsp; &nbsp; <b> /api/productos </b>
+
+</p>
+
+<p>
+    
+![GET](https://img.shields.io/badge/method-PUT-blueviolet.svg)   &nbsp; &nbsp; <b> /api/productos/{id} </b> (Soft delete)
+
+</p>
 
 <hr>
 <h3> Cliente :bust_in_silhouette: </h3>
@@ -36,18 +63,41 @@ como serian los body correspondientes</h4>
         "direccion": "UTN 388",
         "condicionIva": "RESPONSABLE_INSCRIPTO"
     }
+    
+<p>
+    
+![GET](https://img.shields.io/badge/method-GET-success.svg)   &nbsp; &nbsp; <b> /api/clientes </b>
 
-<p>/api/clientes <b>GET :arrow_down: </b> </p>
+</p>
 
-<p>/api/clientes/{id} <b>GET :arrow_down: </b></p>
+<p>
+    
+![GET](https://img.shields.io/badge/method-GET-success.svg)   &nbsp; &nbsp; <b> /api/clientes/{id} </b>
 
-<p>/api/clientes/search?query={loquesea} <b>GET :arrow_down: </b></p>
+</p>
 
-<p>/api/clientes <b>POST :arrow_up_small: </b></p>
+<p>
+    
+![GET](https://img.shields.io/badge/method-GET-success.svg)   &nbsp; &nbsp; <b> /api/clientes/search?query={loquesea} </b>
 
-<p>/api/clientes <b>PUT :id:</b></p>
+</p>
+<p>
+    
+![GET](https://img.shields.io/badge/method-POST-yellow.svg)   &nbsp; &nbsp; <b> /api/clientes </b>
 
-<p>/api/clientes/{id} <b>PUT :x: </b> (Este borra y es put) </p>
+</p>
+
+<p>
+    
+![GET](https://img.shields.io/badge/method-PUT-blueviolet.svg)   &nbsp; &nbsp; <b> /api/clientes </b>
+
+</p>
+
+<p>
+    
+![GET](https://img.shields.io/badge/method-PUT-blueviolet.svg)   &nbsp; &nbsp; <b> /api/clientes/{id} </b> (Soft delete)
+
+</p>
 
 <hr>
 <h3> Empresa :department_store: </h3>
@@ -63,15 +113,35 @@ como serian los body correspondientes</h4>
         "condicionIva" : "RESPONSABLE_INSCRIPTO
     }
 
-<p>/api/empresa <b>GET :arrow_down: </b> </p>
+<p>
 
-<p>/api/empresa/{id} <b>GET :arrow_down: </b></p>
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/empresa </b>
 
-<p>/api/empresa <b>POST :arrow_up_small: </b></p>
+</p>
 
-<p>/api/empresa <b>PUT :id:</b></p>
+<p>
 
-<p>/api/empresa/{id} <b>DELETE :x: </b> (Este borra y es DELETE) </p>
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/empresa/{id} </b>
+
+</p>
+
+<p>
+
+![GET](https://img.shields.io/badge/method-POST-yellow.svg) &nbsp; &nbsp; <b> /api/empresa </b>
+
+</p>
+
+<p>
+
+![GET](https://img.shields.io/badge/method-PUT-blueviolet.svg) &nbsp; &nbsp; <b> /api/empresa </b>
+
+</p>
+
+<p>
+
+![GET](https://img.shields.io/badge/method-DELETE-red.svg) &nbsp; &nbsp; <b> /api/empresa/{id} </b>
+
+</p>
 
 <hr>
 <h3> Factura :clipboard: </h3>
@@ -191,10 +261,27 @@ como serian los body correspondientes</h4>
         }
     }
 
-<p>/api/facturas/{id} <b> GET :arrow_down: </b> </p>
+<p>
 
-<p>/api/facturas/cliente/{idcliente} <b> GET :arrow_down: </b> </p>
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/facturas/{id} </b>
 
-<p>/api/facturas <b> POST :arrow_up_small: </b> </p>
+</p>
 
-<p>/api/facturas/{id} <b>DELETE :x: </b> (Este borra y es DELETE) </p>
+<p>
+
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/facturas/cliente/{idcliente} </b>
+
+</p>
+
+
+<p>
+
+![GET](https://img.shields.io/badge/method-POST-yellow.svg) &nbsp; &nbsp; <b> /api/facturas </b>
+
+</p>
+
+<p>
+
+![GET](https://img.shields.io/badge/method-DELETE-red.svg) &nbsp; &nbsp; <b> /api/facturas/{id} </b>
+
+</p>
