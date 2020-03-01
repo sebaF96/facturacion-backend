@@ -9,4 +9,6 @@ public interface Identificable<ID extends Serializable> {
     void setActive(Boolean active);
 
     Boolean getActive();
+
+    String getNombre();
 }
