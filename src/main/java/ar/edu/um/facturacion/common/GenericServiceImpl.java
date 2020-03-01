@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,7 +51,14 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
 
     @Override
     public List<T> getAll() {
-        return getRepository().findAll().stream().filter(Identificable::getActive).collect(Collectors.toList());
+        ArrayList<T> all = (ArrayList<T>) getRepository().findAll()
+                .stream()
+                .filter(Identificable::getActive)
+                .collect(Collectors.toList());
+
+        Collections.reverse(all);
+
+        return all;
     }
 
     public abstract JpaRepository<T, ID> getRepository();
