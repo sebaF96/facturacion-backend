@@ -261,6 +261,13 @@ POST no hace falta especificar el id en el body</h4>
         }
     }
 
+
+<p>
+
+![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/facturas </b>
+
+</p>
+
 <p>
 
 ![GET](https://img.shields.io/badge/method-GET-%3CCOLOR%3E.svg) &nbsp; &nbsp; <b> /api/facturas/{id} </b>
