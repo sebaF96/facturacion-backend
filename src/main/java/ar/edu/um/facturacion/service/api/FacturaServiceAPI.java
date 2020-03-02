@@ -15,5 +15,6 @@ public interface FacturaServiceAPI {
     ResponseEntity<Factura> getFacturaById(Long id);
     ResponseEntity<String> deleteFacturaById(Long id);
     List<Factura> getFacturaByCliente(Long id);
+    List<Factura> getAll();
 
 }

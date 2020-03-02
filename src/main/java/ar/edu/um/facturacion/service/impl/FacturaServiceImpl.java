@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -120,10 +121,24 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
 
         for (Encabezado encabezado : encabezados) {
             Factura factura = new Factura(encabezado, encabezado.getItems(), pieRepository.findById(encabezado.getId()).get());
-            facturas.add(factura);
+            facturas.add(0, factura);
         }
 
         return facturas;
+    }
+
+    @Override
+    public List<Factura> getAll() {
+
+        ArrayList<Factura> facturas = new ArrayList<>();
+
+        for (Encabezado encabezado : encabezadoRepository.findAll()) {
+
+            facturas.add(0, new Factura(encabezado, encabezado.getItems(), pieRepository.findById(encabezado.getId()).orElse(null)));
+        }
+
+        return facturas;
+
     }
 
 

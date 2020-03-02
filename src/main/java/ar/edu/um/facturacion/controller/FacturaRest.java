@@ -26,6 +26,10 @@ public class FacturaRest {
         this.facturaServiceAPI = facturaServiceAPI;
     }
 
+    @GetMapping
+    public List<Factura> getFacturas(){
+        return facturaServiceAPI.getAll();
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Factura> getFactura(@PathVariable Long id){
