@@ -23,7 +23,7 @@ public class EmpresaRest {
     }
 
     @GetMapping
-    public ResponseEntity<Empresa> getOneEmpresa(@PathVariable Long id){
+    public ResponseEntity<Empresa> getOneEmpresa(){
         return empresaServiceAPI.getFirst();
     }
 
