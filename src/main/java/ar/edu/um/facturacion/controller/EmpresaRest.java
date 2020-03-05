@@ -23,27 +23,27 @@ public class EmpresaRest {
     }
 
     @GetMapping
-    public ResponseEntity<Empresa> getOneEmpresa(){
+    public ResponseEntity<Empresa> getOneEmpresa() {
         return empresaServiceAPI.getFirst();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getEmpresa(@PathVariable Long id){
+    public ResponseEntity<Empresa> getEmpresa(@PathVariable Long id) {
         return empresaServiceAPI.get(id);
     }
 
     @PostMapping
-    public ResponseEntity<Empresa> createEmpresa(@Valid @RequestBody Empresa empresa){
+    public ResponseEntity<Empresa> createEmpresa(@Valid @RequestBody Empresa empresa) {
         return empresaServiceAPI.add(empresa);
     }
 
     @PutMapping
-    public ResponseEntity<Empresa> updateEmpresa(@Valid @RequestBody Empresa empresa){
-       return empresaServiceAPI.update(empresa);
+    public ResponseEntity<Empresa> updateEmpresa(@Valid @RequestBody Empresa empresa) {
+        return empresaServiceAPI.update(empresa);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteEmpresa(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deleteEmpresa(@PathVariable Long id) {
         return empresaServiceAPI.delete(id);
     }
 

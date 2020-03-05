@@ -12,7 +12,7 @@ public enum CondicionIva {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return condicion;
     }
 }

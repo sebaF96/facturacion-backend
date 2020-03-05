@@ -98,6 +98,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
             itemsRepository.deleteAll(factura.getItems());
             encabezadoRepository.delete(factura.getEncabezado());
 
+
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
 
         } catch (NullPointerException | EmptyResultDataAccessException | AssertionError e) {

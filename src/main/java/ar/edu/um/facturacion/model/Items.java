@@ -23,7 +23,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="factura_items")
+@Table(name = "factura_items")
 public class Items implements Serializable {
 
     @Id

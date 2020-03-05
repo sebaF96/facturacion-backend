@@ -27,28 +27,28 @@ public class FacturaRest {
     }
 
     @GetMapping
-    public List<Factura> getFacturas(){
+    public List<Factura> getFacturas() {
         return facturaServiceAPI.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Factura> getFactura(@PathVariable Long id){
+    public ResponseEntity<Factura> getFactura(@PathVariable Long id) {
         return facturaServiceAPI.getFacturaById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/cliente/{clienteId}")
-    public List<Factura> getFacturasByCliente(@PathVariable Long clienteId){
+    public List<Factura> getFacturasByCliente(@PathVariable Long clienteId) {
         return facturaServiceAPI.getFacturaByCliente(clienteId);
     }
 
     @PostMapping
-    public ResponseEntity<Factura> createFactura(@RequestBody Factura factura){
+    public ResponseEntity<Factura> createFactura(@RequestBody Factura factura) {
         return facturaServiceAPI.createFactura(factura.getEncabezado(), factura.getItems(), factura.getPie());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteFactura(@PathVariable Long id){
+    public ResponseEntity<String> deleteFactura(@PathVariable Long id) {
         return facturaServiceAPI.deleteFacturaById(id);
     }
 

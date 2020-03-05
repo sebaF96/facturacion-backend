@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="empresas")
+@Table(name = "empresas")
 public class Empresa implements Serializable, Identificable<Long> {
 
     @Id

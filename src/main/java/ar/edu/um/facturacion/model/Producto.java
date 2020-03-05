@@ -17,8 +17,8 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="producto")
-public class Producto implements Serializable, Identificable<Long>{
+@Table(name = "producto")
+public class Producto implements Serializable, Identificable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +33,6 @@ public class Producto implements Serializable, Identificable<Long>{
     private BigDecimal precio;
     @Column(columnDefinition = "tinyint(1) default 1")
     private Boolean active = true;
-
-
 
 
 }

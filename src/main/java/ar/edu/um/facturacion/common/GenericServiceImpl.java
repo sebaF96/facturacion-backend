@@ -18,7 +18,7 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
 
     @Override
     public ResponseEntity<T> add(T entity) {
-        if(entity.getId() != null && getRepository().findById(entity.getId()).isPresent()){
+        if (entity.getId() != null && getRepository().findById(entity.getId()).isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         getRepository().save(entity);
@@ -27,7 +27,7 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
 
     @Override
     public ResponseEntity<HttpStatus> delete(ID id) {
-        if(!getRepository().findById(id).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!getRepository().findById(id).isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         T entity = getRepository().findById(id).get();
         entity.setActive(false);
@@ -38,13 +38,15 @@ public abstract class GenericServiceImpl<T extends Identificable<ID>, ID extends
 
     @Override
     public ResponseEntity<T> get(ID id) {
-        if(!getRepository().findById(id).isPresent() || !getRepository().findById(id).get().getActive()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!getRepository().findById(id).isPresent() || !getRepository().findById(id).get().getActive())
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(getRepository().findById(id).get(), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<T> update(T entity) {
-        if(!getRepository().findById(entity.getId()).isPresent() || !entity.getActive()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (!getRepository().findById(entity.getId()).isPresent() || !entity.getActive())
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         getRepository().save(entity);
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
