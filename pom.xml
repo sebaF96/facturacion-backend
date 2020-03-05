@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ar.edu.um</groupId>
-    <artifactId>facturacion</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>facturacion</name>
+    <artifactId>facturacion-backend</artifactId>
+    <version>1.0.0-RELEASE</version>
+    <name>facturacion-backend</name>
     <description>Software de facturacion online</description>
 
     <properties>
