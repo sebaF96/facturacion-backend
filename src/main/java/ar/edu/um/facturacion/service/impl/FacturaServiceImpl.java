@@ -25,6 +25,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
     private ItemsRepository itemsRepository;
     private ProductoRepository productoRepository;
     private ClienteRepository clienteRepository;
+    private EmpresaRepository empresaRepository;
 
 
     @Autowired
@@ -32,13 +33,15 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
                               ClienteRepository clienteRepository,
                               PieRepository pieRepository,
                               ItemsRepository itemsRepository,
-                              ProductoRepository productoRepository) {
+                              ProductoRepository productoRepository,
+                              EmpresaRepository empresaRepository) {
 
         this.encabezadoRepository = encabezadoRepository;
         this.pieRepository = pieRepository;
         this.itemsRepository = itemsRepository;
         this.productoRepository = productoRepository;
         this.clienteRepository = clienteRepository;
+        this.empresaRepository = empresaRepository;
     }
 
 
@@ -48,7 +51,7 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
         try {
             encabezado.setFecha(Date.valueOf(LocalDate.now()));
             encabezado.setCliente(clienteRepository.findById(encabezado.getCliente().getId()).orElse(null));
-            encabezado.setLetra(encabezado.getCliente().getCondicionIva() == CondicionIva.RESPONSABLE_INSCRIPTO ? TipoFactura.A : TipoFactura.B);
+            encabezado.setLetra(this.setLetra(encabezado.getCliente()));
             encabezadoRepository.save(encabezado);
 
             for (Items item : items) {
@@ -140,6 +143,13 @@ public class FacturaServiceImpl implements FacturaServiceAPI {
 
         return facturas;
 
+    }
+
+    private TipoFactura setLetra(Cliente cliente) {
+
+        if (empresaRepository.findAll().get(0).getCondicionIva() != CondicionIva.RESPONSABLE_INSCRIPTO)
+            return TipoFactura.C;
+        return cliente.getCondicionIva() == CondicionIva.RESPONSABLE_INSCRIPTO ? TipoFactura.A : TipoFactura.B;
     }
 
 
