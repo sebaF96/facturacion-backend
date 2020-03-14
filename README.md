@@ -4,8 +4,6 @@
 
 <hr>
 <h2> Endpoints </h3>
-<h4>Todos los metodos POST y PUT (menos los de soft-delete) necesitan body en Json. En el caso de los 
-POST no hace falta especificar el id en el body</h4>
 <hr>
 <h3> Producto :high_heel: </h3>
     
@@ -145,7 +143,7 @@ POST no hace falta especificar el id en el body</h4>
 
 <hr>
 <h3> Factura :clipboard: </h3>
-<h4> lo que tenes que enviar </h4>
+<h4> formato necesario para post </h4>
 
     {
         "encabezado" : {
@@ -189,7 +187,7 @@ POST no hace falta especificar el id en el body</h4>
 
 
 
-<h4> lo que te contesta </h4>
+<h4> formato de response </h4>
 
     {
         "encabezado": {
